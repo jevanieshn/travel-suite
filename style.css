@@ -1,0 +1,270 @@
+/* Custom CSS for Aurora Bay Resort */
+
+/* 1. Root Variables & Base */
+:root{
+    --primary: #0a0a0a; /* Dark background */
+    --accent: #FFD700; /* Gold/Amber */
+    --accent-light: rgba(255, 215, 0, 0.85);
+    --text-hero: rgba(255,255,255,0.95);
+    --glass-bg: rgba(255,255,255,0.08);
+    --glass-border: rgba(255,255,255,0.18);
+    --light-section: #f8f9fa; /* Very light gray/off-white */
+}
+
+html,body{
+    scroll-behavior: smooth;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--primary);
+    background-color: #ffffff;
+}
+
+/* 2. Typography & Branding */
+.navbar-brand, .hotel-title, .section-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+
+.navbar-brand {
+    letter-spacing: 1px;
+    font-size: 1.5rem;
+    color: #fff !important;
+}
+
+.hotel-title{
+    font-size: clamp(3rem, 7vw, 7rem);
+    line-height: 0.9;
+    color: var(--text-hero);
+    text-shadow: 0 4px 20px rgba(0,0,0,0.7);
+    margin: 0 0 0.25rem;
+}
+.hotel-sub{
+    color: var(--accent-light);
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 1rem;
+    color: #1a1a1a;
+}
+.lead {
+    color: #555;
+    font-weight: 400;
+}
+
+/* 3. Navigation */
+.navbar {
+    background: rgba(0, 0, 0, 0.3); /* Semi-transparent dark overlay */
+    backdrop-filter: blur(5px);
+    transition: background-color 0.3s ease;
+}
+
+.navbar-dark .nav-link {
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.navbar-dark .nav-link:hover {
+    color: var(--accent-light);
+}
+
+.btn-book-now {
+    background-color: var(--accent);
+    color: #1a1a1a !important;
+    font-weight: 600;
+    border: 1px solid var(--accent);
+    padding: 0.4rem 1.25rem;
+    border-radius: 4px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-book-now:hover {
+    background-color: #fff;
+    border-color: #fff;
+}
+
+/* 4. Hero Section */
+.hero {
+    position: relative;
+    /* Placeholder image from Unsplash (Infinity Pool/Beach) */
+    background: center/cover no-repeat url("https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 56px; /* Adjust for fixed navbar height */
+}
+
+.hero::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    /* Dark gradient for text contrast */
+    background: linear-gradient(180deg, rgba(0,0,0,0.1), rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.8));
+    z-index:0;
+}
+
+.hero-inner{
+    position: relative;
+    z-index:2;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+/* 5. Booking Card (Glassmorphism) */
+.booking-card{
+    backdrop-filter: blur(10px) saturate(120%);
+    background: var(--glass-bg);
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    /* TAMBAH: Meningkatkan Z-index agar kartu pemesanan di atas semua latar belakang Hero */
+    z-index: 10; 
+    position: relative; 
+}
+
+.booking-label {
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.6);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0;
+}
+
+.date-input, .select-input {
+    background: transparent;
+    border: none;
+    color: var(--text-hero) !important;
+    font-weight: 600;
+    padding-left: 0;
+    box-shadow: none !important;
+    /* PASTIKAN latar belakang transparan hanya saat tidak fokus */
+    background-color: transparent !important; 
+}
+
+/* Fix for dropdown arrow color on dark glass */
+.form-select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+}
+
+/* --- PERBAIKAN UTAMA UNTUK DROPDOWN (SELECT OPTIONS) --- */
+/* Target elemen select itu sendiri saat dropdown terbuka */
+.select-input:focus {
+    border-color: var(--accent);
+}
+
+/* MENINGKATKAN PRIORITAS DAN WARNA PADA OPSI */
+.select-input option {
+    /* Memberi latar belakang padat agar pilihan tidak transparan */
+    background-color: #1a1a1a !important; /* Gunakan !important untuk menimpa browser default */
+    color: #fff !important;
+    padding: 5px;
+}
+/* -------------------------------------------------------- */
+
+/* ... (Bagian 6-8 dan sisanya tidak perlu diubah) ... */
+
+/* Fix for dropdown arrow color on dark glass */
+.form-select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+}
+
+/* --- PERBAIKAN UTAMA UNTUK DROPDOWN (SELECT OPTIONS) --- */
+/* Memberi latar belakang padat agar pilihan tidak transparan saat dropdown dibuka */
+.select-input option {
+    background: #1a1a1a; 
+    color: #fff;
+    padding: 5px;
+}
+/* Memastikan elemen select mendapatkan focus */
+.select-input:focus {
+    border-color: var(--accent);
+}
+/* -------------------------------------------------------- */
+
+/* Accent Button */
+.btn-accent {
+    background: var(--accent);
+    color: #1a1a1a;
+    font-weight: 700;
+    border: none;
+    padding: .85rem 1rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    width: 100%;
+    white-space: nowrap;
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+.btn-accent:hover {
+    background: var(--accent-light);
+    color: #1a1a1a;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+}
+
+/* 6. Content Sections & Footer */
+.content-section {
+    padding: 8rem 0;
+}
+
+.bg-light-section {
+    background-color: var(--light-section);
+}
+
+.content-section img {
+    border-radius: 10px;
+    height: 400px;
+    object-fit: cover;
+    width: 100%;
+}
+
+footer {
+    background: #000;
+    color: rgba(255,255,255,0.7);
+}
+
+/* 7. Modal Styling (High-Class) */
+.modal-high-class {
+    background: #1a1a1a;
+    color: #fff;
+    border-radius: 10px;
+}
+.modal-high-class .modal-title {
+    color: var(--accent);
+}
+.modal-high-class .btn-close-white {
+    filter: invert(1);
+}
+.modal-high-class .alert-success {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+.modal-high-class .alert-warning {
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+    color: #856404;
+}
+.modal-high-class .alert-danger {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+
+/* 8. Responsiveness */
+@media (max-width: 991px) {
+    .hero { min-height: 80vh; }
+    .hero-inner { padding-top: 3rem; padding-bottom: 3rem; }
+    .hotel-title { font-size: 4rem; }
+    .booking-card { margin-top: 3rem; }
+    .btn-accent { font-size: 0.75rem; padding: 0.6rem 0.5rem; }
+    .content-section { padding: 4rem 0; }
+    .content-section img { height: 300px; }
+    .navbar-toggler { margin-left: 1rem; }
+    .navbar-collapse { background: rgba(0, 0, 0, 0.85); padding: 1rem; border-radius: 8px; margin-top: 0.5rem; }
+}
